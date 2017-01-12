@@ -16,9 +16,6 @@
 [submodule "src/git"]
 	path = src/git
 	url = https://github.com/git/git
-[submodule "src/https:/github.com/google/leveldb"]
-	path = src/https:/github.com/google/leveldb
-	url = https://github.com/google/snappy
 [submodule "src/snappy"]
 	path = src/snappy
 	url = https://github.com/google/snappy
