@@ -46,3 +46,6 @@
 [submodule "src/doxygen"]
 	path = src/doxygen
 	url = https://github.com/doxygen/doxygen.git
+[submodule "src/the_silver_searcher"]
+	path = src/the_silver_searcher
+	url = https://github.com/ggreer/the_silver_searcher
