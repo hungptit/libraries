@@ -58,3 +58,9 @@
 [submodule "src/jemalloc"]
 	path = src/jemalloc
 	url = https://github.com/jemalloc/jemalloc.git
+[submodule "src/lz4"]
+	path = src/lz4
+	url = https://github.com/Cyan4973/lz4
+[submodule "src/CMake"]
+	path = src/CMake
+	url = https://github.com/Kitware/CMake.git
