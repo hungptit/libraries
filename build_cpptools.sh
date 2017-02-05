@@ -110,7 +110,7 @@ build_casablanca() {
 
 echo "Install doxygen"
 sh build_using_cmake.sh doxygen "" > /dev/null
-sh build_using_cmake.sh poco "" > /dev/null
+sh build_using_cmake.sh poco "-DPOCO_STATIC=1" > /dev/null
 
 echo "Install TBB"
 install_tbb > /dev/null

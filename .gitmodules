@@ -61,3 +61,12 @@
 [submodule "src/poco"]
 	path = src/poco
 	url = https://github.com/pocoproject/poco.git
+[submodule "src/zguide"]
+	path = src/zguide
+	url = https://github.com/booksbyus/zguide.git
+[submodule "src/cppzmq"]
+	path = src/cppzmq
+	url = https://github.com/zeromq/cppzmq.git
+[submodule "src/libzmq"]
+	path = src/libzmq
+	url = https://github.com/zeromq/libzmq.git
