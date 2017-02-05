@@ -55,3 +55,9 @@
 [submodule "src/lz4"]
 	path = src/lz4
 	url = https://github.com/Cyan4973/lz4
+[submodule "src/tidy-html5"]
+	path = src/tidy-html5
+	url = https://github.com/htacg/tidy-html5.git
+[submodule "src/poco"]
+	path = src/poco
+	url = https://github.com/pocoproject/poco.git
