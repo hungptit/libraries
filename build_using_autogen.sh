@@ -7,7 +7,7 @@ EXTRA_MAKE_OPTIONS=$3
 EXTRA_INSTALL_OPTIONS=$4
 
 APKG_SRC=$SRC_DIR/$PKGNAME
-APKG_BUILD_FOLDER=$APKG_SRC/build
+APKG_BUILD_FOLDER=$TMP_DIR/$PKGNAME
 APKG_PREFIX=$PREFIX
 
 echo "Src folder: " $APKG_SRC
@@ -19,11 +19,15 @@ echo "Extra make options: " $EXTRA_MAKE_OPTIONS
 echo "Extra installation options: " $EXTRA_INSTALL_OPTIONS
 
 # Build a given package
+cd $APKG_SRC
+$APKG_SRC/autogen.sh                    
+
+mkdir -p $APKG_BUILD_FOLDER
 cd $APKG_BUILD_FOLDER
-$APKG_SRC./autogen.sh                    
 $APKG_SRC/configure --prefix=$APKG_PREFIX $EXTRA_CONFIG_OPTIONS
 make $BUILD_OPTS $EXTRA_MAKE_OPTIONS
 make install
 
 # Return to the external folder.
 cd $ROOT_DIR
+rm -rf $APKG_BUILD_FOLDER

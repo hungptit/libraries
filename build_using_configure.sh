@@ -19,11 +19,10 @@ echo "====> Build folder: " $APKG_BUILD_FOLDER
 rm -rf $APKG_BUILD_FOLDER
 mkdir $APKG_BUILD_FOLDER
 cd $APKG_BUILD_FOLDER
-$APKG_SRC/bootstrap
 $APKG_SRC/configure --prefix=$APKG_PREFIX $EXTRA_CONFIG_OPTIONS
 make $BUILD_OPTS $EXTRA_MAKE_OPTIONS
 make install
-rm -rf $APKG_BUILD_FOLDER
 
-# Return to the external folder.
+# Cleanup.
 cd $ROOT_DIR
+rm -rf $APKG_BUILD_FOLDER
