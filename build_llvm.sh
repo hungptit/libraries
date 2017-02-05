@@ -1,48 +1,14 @@
 #!/bin/bash
+source get_build_options.sh 
 
-# Setup build environment
-setup() {
-    EXTERNAL_FOLDER=$PWD
-    SRC_FOLDER=$EXTERNAL_FOLDER/src
-    TMP_FOLDER=/tmp/build/
+LLVM_FOLDER=$SRC_DIR/llvm
+LLVM_BUILD_FOLDER=$LLVM_FOLDER/build
+LLVM_PREFIX=$ROOT_DIR
 
-    mkdir -p $TMP_FOLDER
-    mkdir -p $SRC_FOLDER
+echo "LLVM_FOLDER: $LLVM_FOLDER"
+echo "LLVM_BUILD_FOLDER: $LLVM_BUILD_FOLDER"
+echo "LLVM_PREFIX: $LLVM_PREFIX"
 
-    NCPUS=$(grep -c ^processor /proc/cpuinfo)
-    BUILD_OPTS=-j$((NCPUS+1))
-
-    # Setup clang
-    CLANG=$EXTERNAL_FOLDER/llvm/bin/clang
-    CLANGPP=$EXTERNAL_FOLDER/llvm/bin/clang++
-    if [ ! -f $CLANGPP ]; then
-        # Fall back to gcc if we do not have clang installed.
-        CLANG=gcc
-        CLANGPP=g++
-    fi
-    CMAKE_RELEASE_BUILD="-DCMAKE_BUILD_TYPE:STRING=Release"
-    CMAKE_USE_CLANG="-DCMAKE_CXX_COMPILER=${CLANGPP} -DCMAKE_C_COMPILER=${CLANG}"
-
-    # Setup CMake
-    CMAKE_PREFIX=$EXTERNAL_FOLDER/cmake
-    CMAKE=$CMAKE_PREFIX/bin/cmake
-    if [ ! -f $CMAKE ]; then
-        # Use system CMake if we could not find the customized CMake.
-        CMAKE=cmake
-    fi
-
-    # Setup git
-    GIT_PREFIX=$EXTERNAL_FOLDER/git
-    GIT=$GIT_PREFIX/bin/git
-    if [ ! -f $GIT ]; then
-        # Use system git if we could not find the customized git.
-        GIT=git
-    fi
-    
-    LLVM_FOLDER=$SRC_FOLDER/llvm
-    LLVM_BUILD_FOLDER=$LLVM_FOLDER/build
-    LLVM_PREFIX=$EXTERNAL_FOLDER/llvm
-}
 
 get_source_code() {
     ROOT_DIR=$1
@@ -61,16 +27,15 @@ get_source_code() {
     git pull
 }
 
-# Setup all required variables
-setup
+cd $SRC_DIR
 
 # Get LLVM source code
 # LLVM_TAG="release_39"
 LLVM_TAG="master"
 
-get_source_code $SRC_FOLDER llvm http://llvm.org/git/llvm.git $LLVM_TAG
+get_source_code $SRC_DIR llvm http://llvm.org/git/llvm.git $LLVM_TAG
 
-LLVM_SRC=$SRC_FOLDER/llvm
+LLVM_SRC=$SRC_DIR/llvm
 mkdir -p $LLVM_SRC/tools
 mkdir -p $LLVM_SRC/projects
 
@@ -80,13 +45,12 @@ get_source_code $LLVM_SRC/tools/clang/tools extra http://llvm.org/git/clang-tool
 
 # Comment below lines if the build process is failed.
 get_source_code $LLVM_SRC/projects compiler-rt http://llvm.org/git/compiler-rt.git $LLVM_TAG
-get_source_code $LLVM_SRC/projects openmp http://llvm.org/git/openmp.git $LLVM_TAG
+# get_source_code $LLVM_SRC/projects openmp http://llvm.org/git/openmp.git $LLVM_TAG
 get_source_code $LLVM_SRC/projects libcxx http://llvm.org/git/libcxx.git $LLVM_TAG
-get_source_code $LLVM_SRC/projects libcxxabi http://llvm.org/git/libcxxabi.git $LLVM_TAG
+# get_source_code $LLVM_SRC/projects libcxxabi http://llvm.org/git/libcxxabi.git $LLVM_TAG
 # get_source_code $LLVM_SRC/projects test-suite http://llvm.org/git/test-suite.git $LLVM_TAG
 
 # Build LLVM
-# rm -rf $LLVM_BUILD_FOLDER
 mkdir -p $LLVM_BUILD_FOLDER
 cd $LLVM_BUILD_FOLDER
 $CMAKE -DCMAKE_INSTALL_PREFIX:PATH=$LLVM_PREFIX -DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_TESTING:BOOL=OFF $CMAKE_USE_CLANG $LLVM_FOLDER 
