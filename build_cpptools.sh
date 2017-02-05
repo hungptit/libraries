@@ -110,12 +110,14 @@ build_casablanca() {
 
 echo "Install doxygen"
 sh build_using_cmake.sh doxygen "" > /dev/null
+sh build_using_cmake.sh poco "" > /dev/null
 
 echo "Install TBB"
 install_tbb > /dev/null
 
 echo "Install eigen"
 install_eigen > /dev/null
+
 
 # echo "Install libevent and memcached"
 # sh build_using_autogen.sh libevent git://levent.git.sourceforge.net/gitroot/levent/libevent > /dev/null

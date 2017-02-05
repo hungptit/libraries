@@ -21,11 +21,11 @@ get_bzip2() {
 # Build packages that are used to build other packages.
 sh build_using_configure.sh cmake "" "$USE_CLANG" > /dev/null &&
 sh build_using_bootstrap.sh m4 "" "$USE_CLANG" > /dev/null
-sh build_using_configure.sh zlib "" "$USE_CLANG" > /dev/null
+sh build_using_cmake.sh zlib "" > /dev/null
 sh build_using_autogen.sh snappy "" "$USE_CLANG" > /dev/null
 sh build_using_autogen.sh lz4 "" "$USE_CLANG" > /dev/null
-sh build_using_autogen.sh graphviz "" "$USE_CLANG" > /dev/null
-sh build_using_autogen.sh jemalloc "" "$USE_CLANG" > /dev/null 
+sh build_using_configure.sh graphviz "" "" > /dev/null
+sh build_using_autogen.sh jemalloc "" "" > /dev/null 
 
 # This package does not install files automatically.
 get_bzip2;
