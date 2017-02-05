@@ -37,7 +37,6 @@ build_bzip2() {
     cd $BZIP2_SRC
     make clean
     make $BUILD_OPTS CC=$CLANG CXX=$CLANGPP CFLAGS="-O4 -Wall" CXXFLAGS="-O4 -Wall" 
-    rm -rf $BZIP2_PREFIX
     make install PREFIX=$BZIP2_PREFIX
     cd $EXTERNAL_FOLDER;
 }
@@ -57,7 +56,7 @@ build_python() {
     make install
 }
 
-# Build packages
+# Build packages that are used to build other packages.
 echo "Build CMake"
 sh build_using_configure.sh cmake "" "$USE_CLANG"
 

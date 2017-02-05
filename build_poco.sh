@@ -65,6 +65,5 @@ mkdir $POCO_BUILD_FOLDER
 cd $POCO_BUILD_FOLDER
 $CMAKE $POCO_FOLDER -DCMAKE_INSTALL_PREFIX=$POCO_PREFIX -DPOCO_STATIC=1 $CMAKE_RELEASE_BUILD
 make $BUILD_OPTS
-rm -r $POCO_PREFIX           # Cleanup the old installation
 make install
 rm -rf $POCO_BUILD_FOLDER       # Cleanup build folder.

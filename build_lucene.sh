@@ -62,7 +62,6 @@ cd $LucenePlusPlus_BUILD
 $CMAKE $LucenePlusPlus_FOLDER -DCMAKE_INSTALL_PREFIX=$LucenePlusPlus_PREFIX $CMAKE_RELEASE_BUILD $CMAKE_USE_CLANG -DLUCENE_USE_STATIC_BOOST_LIBS=true
 
 make $BUILD_OPTS
-rm -rf $LucenePlusPlus_PREFIX
 make install
 rm -rf $LucenePlusPlus_BUILD
 

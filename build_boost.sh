@@ -46,7 +46,6 @@ if [ ! -d $BOOST_SRC ]; then
     cd $BOOST_SRC
 fi
 cd $BOOST_SRC
-rm -rf $BOOST_PREFIX
 
 # Update all modules
 git fetch

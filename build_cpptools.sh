@@ -55,7 +55,6 @@ install_tbb() {
     fi
 
     cd $EXTERNAL_FOLDER
-    rm -rf $TBB_PREFIX
     tar xf $SRC_FOLDER/$TBB_FILE
     mv $TBB_FOLDER $TBB_PREFIX
 
@@ -108,8 +107,7 @@ build_libmemcached() {
 
     cd $LIBMEMCACHED_FOLDER
     ./configure --prefix=$LIBMEMCACHED_PREFIX --with-memcached=$MEMCACHED_PREFIX
-    make $BUILD_OPTS
-    rm -rf $LIBMEMCACHED_PREFIX
+    make $BUILD_OPTS    
     make install
 }
 
@@ -142,8 +140,7 @@ build_casablanca() {
     # Use system boost libraries
     # $CMAKE $CPPRESTSDK_SRC/Release -DCMAKE_INSTALL_PREFIX=$CPPRESTSDK_PREFIX $CMAKE_RELEASE_BUILD $CMAKE_USE_CLANG -DBoost_USE_MULTITHREADED=ON -DBUILD_SHARED_LIBS=0
 
-    make $BUILD_OPTS
-    rm -rf $CPPRESTSDK_PREFIX
+    make $BUILD_OPTS    
     make install
 }
 
@@ -193,5 +190,5 @@ install_eigen > /dev/null
 # # Now build and install the library
 # ./configure --prefix=$HDF5_PREFIX --with-zlib=$ZLIB_PREFIX --enable-hl --enable-production --enable-cxx --enable-static-exec --enable-shared=0
 # make $BUILD_OPTS
-# rm -rf $HDF5_PREFIX
+
 # make install

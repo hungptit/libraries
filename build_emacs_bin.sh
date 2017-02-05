@@ -89,7 +89,6 @@ git pull
 ./autogen.sh
 ./configure --prefix=$CTAGS_PREFIX EXTRA_CFLAGS="-O4 -Wall" EXTRA_CPPFLAGS="-O4"
 make $BUILD_OPTS
-rm -rf $CTAGS_PREFIX
 make install
 
 # Build global
@@ -109,7 +108,6 @@ cd $GLOBAL_FILE
 make configure
 ./configure --prefix=$GLOBAL_PREFIX CFLAGS="-O4 -Wall" --with-sqlite3 --with-exuberant-ctags=ctags
 make $BUILD_OPTS
-rm -rf $GLOBAL_PREFIX
 make install
 
 # Build Emacs

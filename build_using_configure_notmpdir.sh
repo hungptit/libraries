@@ -1,48 +1,29 @@
 #!/bin/bash
-EXTERNAL_FOLDER=$1
-PKGNAME=$2
-PKGGIT=$3
-EXTRA_CONFIG_OPTIONS=$4
-EXTRA_MAKE_OPTIONS=$5
-SRC_FOLDER=$EXTERNAL_FOLDER/src
+# Parse input arguments
+PKGNAME=$1
+EXTRA_CONFIG_OPTIONS=$2
+EXTRA_MAKE_OPTIONS=$3
 
-mkdir -p $SRC_FOLDER
+# Setup build configurations
+source get_build_options.sh 
+APKG_SRC=$SRC_DIR/$PKGNAME
+APKG_BUILD_FOLDER=$APKG_SRC
+APKG_PREFIX=$PREFIX
 
-NCPUS=$(grep -c ^processor /proc/cpuinfo)
-BUILD_OPTS=-j$((NCPUS+1))
+echo "====> Src folder: " $APKG_SRC
+echo "====> Build folder: " $APKG_BUILD_FOLDER
+echo "====> Prefix folder: " $APKG_PREFIX
 
-# Setup clang
-CLANG=$EXTERNAL_FOLDER/llvm/bin/clang
-CLANGPP=$EXTERNAL_FOLDER/llvm/bin/clang++
-if [ ! -f $CLANGPP ]; then
-    # Fall back to gcc if we do not have clang installed.
-    CLANG=gcc
-    CLANGPP=g++
-fi
-
-# Setup git
-GIT_PREFIX=$EXTERNAL_FOLDER/git
-GIT=$GIT_PREFIX/bin/git
-if [ ! -f $GIT ]; then
-    GIT=git
-fi
-
-# Build given package
-APKG_SRC=$SRC_FOLDER/$PKGNAME
-APKG_PREFIX=$EXTERNAL_FOLDER/$PKGNAME
-
-echo "Src folder: " $APKG_SRC
-echo "Build folder: " $APKG_BUILD_FOLDER
-echo "Prefix folder: " $APKG_PREFIX
-
-cd $SRC_FOLDER
-if [ ! -d $APKG_SRC ]; then
-    $GIT clone $PKGGIT $PKGNAME
-fi
-
-# Pull the latest version
-cd $APKG_SRC
-$GIT pull
-./configure --prefix=$APKG_PREFIX $EXTRA_CONFIG_OPTIONS
+# Build a given package
+echo "====> Build folder: " $APKG_BUILD_FOLDER
+rm -rf $APKG_BUILD_FOLDER
+mkdir $APKG_BUILD_FOLDER
+cd $APKG_BUILD_FOLDER
+$APKG_SRC/bootstrap
+$APKG_SRC/configure --prefix=$APKG_PREFIX $EXTRA_CONFIG_OPTIONS
 make $BUILD_OPTS $EXTRA_MAKE_OPTIONS
 make install
+rm -rf $APKG_BUILD_FOLDER
+
+# Return to the external folder.
+cd $ROOT_DIR

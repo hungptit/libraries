@@ -24,3 +24,6 @@ $APKG_SRC/configure --prefix=$APKG_PREFIX $EXTRA_CONFIG_OPTIONS
 make $BUILD_OPTS $EXTRA_MAKE_OPTIONS
 make install
 rm -rf $APKG_BUILD_FOLDER
+
+# Return to the external folder.
+cd $ROOT_DIR
