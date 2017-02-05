@@ -18,7 +18,6 @@ get_bzip2() {
     cd $ROOT_DIR
 }
 
-
 # Build packages that are used to build other packages.
 sh build_using_configure.sh cmake "" "$USE_CLANG" > /dev/null &&
 sh build_using_bootstrap.sh m4 "" "$USE_CLANG" > /dev/null

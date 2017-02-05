@@ -1,41 +1,5 @@
 #!/bin/bash
-EXTERNAL_FOLDER=$PWD
-SRC_FOLDER=$EXTERNAL_FOLDER/src
-TMP_FOLDER=/tmp/build/
-
-mkdir -p $TMP_FOLDER
-mkdir -p $SRC_FOLDER
-
-NCPUS=$(grep -c ^processor /proc/cpuinfo)
-BUILD_OPTS=-j$((NCPUS+1))
-
-# Setup clang
-CLANG=$EXTERNAL_FOLDER/llvm/bin/clang
-CLANGPP=$EXTERNAL_FOLDER/llvm/bin/clang++
-if [ ! -f $CLANGPP ]; then
-    # Fall back to gcc if we do not have clang installed.
-    CLANG=gcc
-    CLANGPP=g++
-fi
-
-# Setup CMake
-CMAKE_PREFIX=$EXTERNAL_FOLDER/cmake
-CMAKE=$CMAKE_PREFIX/bin/cmake
-if [ ! -f $CMAKE ]; then
-    # Use system CMake if we could not find the customized CMake.
-    CMAKE=cmake
-fi
-# CMAKE_RELEASE_BUILD="-DCMAKE_BUILD_TYPE:STRING=Release"
-CMAKE_RELEASE_BUILD="-DCMAKE_BUILD_TYPE=Release"
-CMAKE_USE_CLANG="-DCMAKE_CXX_COMPILER=${CLANGPP} -DCMAKE_C_COMPILER=${CLANG}"
-
-# Setup git
-GIT_PREFIX=$EXTERNAL_FOLDER/git
-GIT=$GIT_PREFIX/bin/git
-if [ ! -f $GIT ]; then
-    # Use system CMake if we could not find the customized CMake.
-    GIT=git
-fi
+source get_build_options.sh 
 
 install_tbb() {
     TBB_RELEASE="tbb44_20160316oss_src"
@@ -145,19 +109,7 @@ build_casablanca() {
 }
 
 echo "Install doxygen"
-sh build_using_cmake.sh $EXTERNAL_FOLDER doxygen https://github.com/doxygen/doxygen.git "" > /dev/null
-
-echo "Install cereal"
-sh install_pkg.sh $EXTERNAL_FOLDER cereal https://github.com/USCiLab/cereal $EXTERNAL_FOLDER > /dev/null
-
-# echo "Install rapidjson"
-sh install_pkg.sh $EXTERNAL_FOLDER rapidjson https://github.com/miloyip/rapidjson $EXTERNAL_FOLDER > /dev/null
-
-# echo "Install splog"
-sh install_pkg.sh $EXTERNAL_FOLDER splog https://github.com/gabime/spdlog.git  $EXTERNAL_FOLDER > /dev/null
-
-echo "Install cppformat"
-sh build_using_cmake.sh $EXTERNAL_FOLDER fmt https://github.com/fmtlib/fmt.git "" > /dev/null
+sh build_using_cmake.sh doxygen "" > /dev/null
 
 echo "Install TBB"
 install_tbb > /dev/null
