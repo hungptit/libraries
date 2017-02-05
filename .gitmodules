@@ -49,3 +49,9 @@
 [submodule "src/the_silver_searcher"]
 	path = src/the_silver_searcher
 	url = https://github.com/ggreer/the_silver_searcher
+[submodule "src/m4"]
+	path = src/m4
+	url = git://git.sv.gnu.org/m4
+[submodule "src/lz4"]
+	path = src/lz4
+	url = https://github.com/Cyan4973/lz4
