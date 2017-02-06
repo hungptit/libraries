@@ -79,3 +79,9 @@
 [submodule "src/benchmark"]
 	path = src/benchmark
 	url = https://github.com/google/benchmark.git
+[submodule "src/ceres-solver"]
+	path = src/ceres-solver
+	url = https://ceres-solver.googlesource.com/ceres-solver
+[submodule "src/EASTL"]
+	path = src/EASTL
+	url = https://github.com/electronicarts/EASTL.git

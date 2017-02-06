@@ -2,7 +2,7 @@
 source get_build_options.sh 
 
 LLVM_FOLDER=$SRC_DIR/llvm
-LLVM_BUILD_FOLDER=$TMP_DIR/build
+LLVM_BUILD_FOLDER=$TMP_DIR/llvm
 LLVM_PREFIX=$ROOT_DIR
 
 echo "LLVM_FOLDER: $LLVM_FOLDER"
@@ -45,7 +45,7 @@ get_source_code $LLVM_SRC/tools/clang/tools extra http://llvm.org/git/clang-tool
 # Comment below lines if the build process is failed.
 get_source_code $LLVM_SRC/projects compiler-rt http://llvm.org/git/compiler-rt.git $LLVM_TAG
 # get_source_code $LLVM_SRC/projects openmp http://llvm.org/git/openmp.git $LLVM_TAG
-get_source_code $LLVM_SRC/projects libcxx http://llvm.org/git/libcxx.git $LLVM_TAG
+# get_source_code $LLVM_SRC/projects libcxx http://llvm.org/git/libcxx.git $LLVM_TAG
 # get_source_code $LLVM_SRC/projects libcxxabi http://llvm.org/git/libcxxabi.git $LLVM_TAG
 # get_source_code $LLVM_SRC/projects test-suite http://llvm.org/git/test-suite.git $LLVM_TAG
 
