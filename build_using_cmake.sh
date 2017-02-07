@@ -1,5 +1,5 @@
 #!/bin/bash
-source get_build_options.sh
+source $LIBRARIES/get_build_options.sh
 
 PKGNAME=$1
 CMAKE_OPTIONS=$2
