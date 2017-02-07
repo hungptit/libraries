@@ -85,3 +85,6 @@
 [submodule "src/EASTL"]
 	path = src/EASTL
 	url = https://github.com/electronicarts/EASTL.git
+[submodule "src/jemalloc"]
+	path = src/jemalloc
+	url = https://github.com/jemalloc/jemalloc.git
