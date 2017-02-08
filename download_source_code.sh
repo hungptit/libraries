@@ -14,7 +14,7 @@ rm -rf $PKGNAME
 
 echo $SRC_DIR
 if [ ! -f $PKGFILE ]; then
-    wget $PKGLINK
+    wget --no-check-certificate $PKGLINK
 fi
 
 PKGSTEM="${PKGFILE%.*.*}"
