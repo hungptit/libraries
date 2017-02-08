@@ -12,5 +12,5 @@ build_leveldb() {
 
 # Build all required packages
 build_leveldb > /dev/null
-sh build_using_cmake.sh gtest > /dev/null 
+sh build_using_cmake.sh googletest > /dev/null 
 sh build_using_cmake.sh benchmark > /dev/null
