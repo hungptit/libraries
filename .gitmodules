@@ -88,3 +88,9 @@
 [submodule "src/jemalloc"]
 	path = src/jemalloc
 	url = https://github.com/jemalloc/jemalloc.git
+[submodule "src/rabbitmq-c"]
+	path = src/rabbitmq-c
+	url = https://github.com/alanxz/rabbitmq-c.git
+[submodule "src/openssl"]
+	path = src/openssl
+	url = https://github.com/openssl/openssl.git
