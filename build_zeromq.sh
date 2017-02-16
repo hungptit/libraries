@@ -1,5 +1,5 @@
 #!/bin/bash
-source get_build_options.sh 
+source ./get_build_options.sh
 # Install libsodium
 sh build_using_configure.sh libsodium  "" ""
 

@@ -2,8 +2,8 @@
 PKGLINK=$1
 PKGNAME=$2
 
-source $LIBRARIES/get_build_options.sh;
-source $LIBRARIES/get_package_info.sh $PKGLINK
+source ./get_build_options.sh;
+source ./get_package_info.sh $PKGLINK
 
 PKGFILE=${PKGLINK##*/}
 
@@ -28,4 +28,3 @@ fi
 mv $PKGSTEM $PKGNAME
 
 cd $ROOT_DIR
-

@@ -1,9 +1,5 @@
 #!/bin/bash
-<<<<<<< HEAD
-source $LIBRARIES/get_build_options.sh
-=======
-source get_build_options.sh
->>>>>>> c8a7722de8424954befd1f50972cf560daba0900
+source ./get_build_options.sh
 
 # Download all required packages
 cd $ROOT_DIR
@@ -44,7 +40,7 @@ sh build_using_cmake.sh zlib "" > /dev/null
 sh build_using_autogen.sh snappy "" "" > /dev/null
 sh build_using_make.sh lz4 "" "" > /dev/null
 sh build_using_configure.sh graphviz "" "" > /dev/null
-sh build_using_autogen.sh jemalloc "" "" > /dev/null 
+sh build_using_autogen.sh jemalloc "" "" > /dev/null
 
 # # This package does not install files automatically.
 sh build_using_make.sh bzip2 "" "" "" > /dev/null
@@ -69,7 +65,7 @@ sh build_using_autogen.sh lz4 "" "$USE_CLANG" > /dev/null
 # sh build_using_autogen.sh graphviz "" "" > /dev/null
 
 printf "Build jemalloc\n"
-sh build_using_autogen.sh jemalloc "" "" > /dev/null 
+sh build_using_autogen.sh jemalloc "" "" > /dev/null
 
 # It might take a long time to build git
 # sh build_using_make.sh  git  profile" "PROFILE=BUILD install" > /dev/null

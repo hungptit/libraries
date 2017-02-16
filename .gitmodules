@@ -31,12 +31,6 @@
 [submodule "src/cmake"]
 	path = src/cmake
 	url = git://cmake.org/cmake.git
-[submodule "src/autoconf"]
-	path = src/autoconf
-	url = git://git.savannah.gnu.org/autoconf.git
-[submodule "src/autogen"]
-	path = src/autogen
-	url = git://git.savannah.gnu.org/autogen.git
 [submodule "src/cpprestsdk"]
 	path = src/cpprestsdk
 	url = https://github.com/Microsoft/cpprestsdk.git

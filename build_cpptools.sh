@@ -1,5 +1,5 @@
 #!/bin/bash
-source get_build_options.sh 
+source ./get_build_options.sh
 
 install_tbb() {
     TBB_RELEASE="tbb44_20160316oss_src"
@@ -55,7 +55,7 @@ install_eigen() {
     cd $EIGEN_BUILD_FOLDER
     $CMAKE $EIGEN_SRC -DCMAKE_INSTALL_PREFIX=$EIGEN_PREFIX $CMAKE_RELEASE_BUILD
     make install $BUILD_OPTS
-    rm -rf $EIGEN_BUILD_FOLDER    
+    rm -rf $EIGEN_BUILD_FOLDER
 }
 
 build_libmemcached() {
@@ -71,7 +71,7 @@ build_libmemcached() {
 
     cd $LIBMEMCACHED_FOLDER
     ./configure --prefix=$LIBMEMCACHED_PREFIX --with-memcached=$MEMCACHED_PREFIX
-    make $BUILD_OPTS    
+    make $BUILD_OPTS
     make install
 }
 
@@ -97,14 +97,14 @@ build_casablanca() {
     cd $CPPRESTSDK_BUILD
 
     # Use customized boost libraries
-    # $CMAKE $CPPRESTSDK_SRC/Release -DCMAKE_INSTALL_PREFIX=$CPPRESTSDK_PREFIX $CMAKE_RELEASE_BUILD -DBOOST_ROOT=$EXTERNAL_FOLDER/boost/ -DBoost_USE_MULTITHREADED=ON -DBUILD_SHARED_LIBS=0 $CMAKE_USE_CLANG 
+    # $CMAKE $CPPRESTSDK_SRC/Release -DCMAKE_INSTALL_PREFIX=$CPPRESTSDK_PREFIX $CMAKE_RELEASE_BUILD -DBOOST_ROOT=$EXTERNAL_FOLDER/boost/ -DBoost_USE_MULTITHREADED=ON -DBUILD_SHARED_LIBS=0 $CMAKE_USE_CLANG
 
     $CMAKE $CPPRESTSDK_SRC/Release -DCMAKE_INSTALL_PREFIX=$CPPRESTSDK_PREFIX $CMAKE_RELEASE_BUILD -DBOOST_ROOT=$EXTERNAL_FOLDER/boost/ -DBoost_USE_MULTITHREADED=ON -DBUILD_SHARED_LIBS=0
 
     # Use system boost libraries
     # $CMAKE $CPPRESTSDK_SRC/Release -DCMAKE_INSTALL_PREFIX=$CPPRESTSDK_PREFIX $CMAKE_RELEASE_BUILD $CMAKE_USE_CLANG -DBoost_USE_MULTITHREADED=ON -DBUILD_SHARED_LIBS=0
 
-    make $BUILD_OPTS    
+    make $BUILD_OPTS
     make install
 }
 
