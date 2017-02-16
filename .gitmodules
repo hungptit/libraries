@@ -94,3 +94,6 @@
 [submodule "src/openssl"]
 	path = src/openssl
 	url = https://github.com/openssl/openssl.git
+[submodule "src/Celero"]
+	path = src/Celero
+	url = https://github.com/DigitalInBlue/Celero.git
