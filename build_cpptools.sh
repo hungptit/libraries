@@ -108,30 +108,11 @@ build_casablanca() {
     make install
 }
 
-echo "Install doxygen"
-sh build_using_cmake.sh doxygen "" > /dev/null
-sh build_using_cmake.sh poco "-DPOCO_STATIC=1" > /dev/null
-
 echo "Install TBB"
 install_tbb > /dev/null
 
 echo "Install eigen"
 install_eigen > /dev/null
-
-
-# echo "Install libevent and memcached"
-# sh build_using_autogen.sh libevent git://levent.git.sourceforge.net/gitroot/levent/libevent > /dev/null
-# sh build_using_autogen.sh memcached git://github.com/memcached/memcached.git "--with-libevent=$EXTERNAL_FOLDER/libevent" > /dev/null
-# build_libmemcached > /dev/null
-
-# echo "Build Casablanca"
-# build_casablanca;
-
-# Build HDF5
-# HDF5_FILE=hdf5-1.8.10
-# HDF5_GIT=https://gitorious.org/hdf5/hdf5-v18.git
-# HDF5_SRC=$SRC_FOLDER/hdf5-v18
-# HDF5_PREFIX=$EXTERNAL_FOLDER/hdf5
 
 # if [ ! -d $HDF5_SRC  ]; then
 #     git clone $HDF5_GIT
