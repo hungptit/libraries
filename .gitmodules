@@ -31,12 +31,6 @@
 [submodule "src/cmake"]
 	path = src/cmake
 	url = git://cmake.org/cmake.git
-[submodule "src/autoconf"]
-	path = src/autoconf
-	url = git://git.savannah.gnu.org/autoconf.git
-[submodule "src/autogen"]
-	path = src/autogen
-	url = git://git.savannah.gnu.org/autogen.git
 [submodule "src/cpprestsdk"]
 	path = src/cpprestsdk
 	url = https://github.com/Microsoft/cpprestsdk.git
@@ -97,3 +91,16 @@
 [submodule "src/Celero"]
 	path = src/Celero
 	url = https://github.com/DigitalInBlue/Celero.git
+[submodule "src/rabbitmq-server"]
+	path = src/rabbitmq-server
+	url = https://github.com/rabbitmq/rabbitmq-server.git
+[submodule "src/Celero"]
+	path = src/Celero
+	url = https://github.com/DigitalInBlue/Celero.git
+[submodule "src/libsodium"]
+	path = src/libsodium
+	url = https://github.com/jedisct1/libsodium.git
+[submodule "src/rtags"]
+	path = src/rtags
+	url = https://github.com/Andersbakken/rtags.git
+

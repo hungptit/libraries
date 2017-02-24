@@ -5,7 +5,7 @@ EXTRA_CONFIG_OPTIONS=$2
 EXTRA_MAKE_OPTIONS=$3
 
 # Setup build configurations
-source get_build_options.sh 
+source $LIBRARIES/get_build_options.sh 
 APKG_SRC=$SRC_DIR/$PKGNAME
 APKG_BUILD_FOLDER=$TMP_DIR/$PKGNAME
 APKG_PREFIX=$PREFIX
@@ -19,7 +19,7 @@ echo "====> Build folder: " $APKG_BUILD_FOLDER
 rm -rf $APKG_BUILD_FOLDER
 
 cd $APKG_SRC
-$APKG_SRC/bootstrap
+$APKG_SRC/bootstrap --force
 
 mkdir $APKG_BUILD_FOLDER
 cd $APKG_BUILD_FOLDER

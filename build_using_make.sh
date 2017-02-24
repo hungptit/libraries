@@ -1,5 +1,5 @@
 #!/bin/bash
-source get_build_options.sh;
+source ./get_build_options.sh
 
 PKGNAME=$1
 EXTRA_MAKE_OPTIONS=$2

@@ -5,7 +5,7 @@ EXTRA_CONFIG_OPTIONS=$2
 EXTRA_MAKE_OPTIONS=$3
 
 # Setup build configurations
-source get_build_options.sh 
+source ./get_build_options.sh
 APKG_SRC=$SRC_DIR/$PKGNAME
 APKG_BUILD_FOLDER=$APKG_SRC
 APKG_PREFIX=$PREFIX

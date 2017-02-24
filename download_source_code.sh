@@ -1,6 +1,7 @@
 #!/bin/bash
 PKGLINK=$1
 PKGNAME=$2
+
 source ./get_build_options.sh;
 source ./get_package_info.sh $PKGLINK
 
@@ -27,4 +28,3 @@ fi
 mv $PKGSTEM $PKGNAME
 
 cd $ROOT_DIR
-
