@@ -103,4 +103,16 @@
 [submodule "src/rtags"]
 	path = src/rtags
 	url = https://github.com/Andersbakken/rtags.git
+[submodule "src/tmux"]
+	path = src/tmux
+	url = https://github.com/tmux/tmux.git
+[submodule "src/libcuckoo"]
+	path = src/libcuckoo
+	url = https://github.com/efficient/libcuckoo.git
+[submodule "src/junction"]
+	path = src/junction
+	url = https://github.com/preshing/junction.git
+[submodule "src/turf"]
+	path = src/turf
+	url = https://github.com/preshing/turf.git
 

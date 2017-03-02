@@ -1,5 +1,5 @@
 #!/bin/bash
-source $LIBRARIES/get_build_options.sh
+source ./get_build_options.sh
 # Build given package
 PKGNAME=$1
 EXTRA_CONFIG_OPTIONS=$2
