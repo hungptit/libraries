@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./get_build_options.sh
+source ./get_build_options.sh;  # Initialize all required variables.
 
 build_git() {
     cd $SRC_DIR/git
@@ -71,7 +71,7 @@ printf "Build lz4\n"
 sh build_using_make.sh lz4 "" "" > /dev/null
 
 printf "Build graphviz\n"
-sh build_using_configure.sh graphviz "" "" > /dev/null
+sh build_using_autogen.sh graphviz "" "" > /dev/null
 
 printf "Build jemalloc\n"
 sh build_using_autogen.sh jemalloc "" "" > /dev/null
@@ -97,10 +97,9 @@ printf "Build benchmark"
 printf "Install libsodium\n"
 sh build_using_autogen.sh libsodium  "" "" > /dev/null
 
-# TODO: Does not work on an old server. Need to fix this.
 printf "Install ZeroMQ\n"
-sh build_using_autogen.sh  libzmq "--with-libsodium=no " > /dev/null
+./build_using_cmake.sh  libzmq "-DWITH_LIBSODIUM=FALSE -DWITH_DOC=FALSE " > /dev/null
 
-# TODO: Fix rtags build issues
+# TODO: Fix rtags build issues because cmake could not find libclang.
 printf "Build rtags"
 ./build_using_cmake.sh rtags > /dev/null
