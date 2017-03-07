@@ -88,6 +88,9 @@
 [submodule "src/openssl"]
 	path = src/openssl
 	url = https://github.com/openssl/openssl.git
+[submodule "src/Celero"]
+	path = src/Celero
+	url = https://github.com/DigitalInBlue/Celero.git
 [submodule "src/rabbitmq-server"]
 	path = src/rabbitmq-server
 	url = https://github.com/rabbitmq/rabbitmq-server.git
@@ -130,3 +133,4 @@
 [submodule "src/proxygen"]
 	path = src/proxygen
 	url = https://github.com/facebook/proxygen.git
+
