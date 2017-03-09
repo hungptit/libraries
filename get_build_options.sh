@@ -12,12 +12,14 @@ case "$osType" in
             NCPUS=$(sysctl -n hw.ncpu);
             CC=clang
             CXX=clang++
-            BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O4" CXXFLAGS="-O4"
+            BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O3" CXXFLAGS="-O3"
+			DYLIB_EXT=".dylib"
         } ;;
     "Linux")
         {
             NCPUS=$(grep -c ^processor /proc/cpuinfo)
-            BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O4" CXXFLAGS="-O4"
+            BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O3" CXXFLAGS="-O3"
+			DYLIB_EXT=".so"
         } ;;
     *)
         {
@@ -43,7 +45,7 @@ if [ ! -f $CLANGPP ]; then
 fi
 
 # Setup build option for make
-USE_CLANG="CC=$CLANG CXX=$CLANGPP CFLAGS=-O4 CXXFLAGS=-O4"
+USE_CLANG="CC=$CLANG CXX=$CLANGPP CFLAGS=-O3 CXXFLAGS=-O3"
 
 # Setup CMake
 CMAKE=$PREFIX/bin/cmake

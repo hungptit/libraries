@@ -88,6 +88,9 @@
 [submodule "src/openssl"]
 	path = src/openssl
 	url = https://github.com/openssl/openssl.git
+[submodule "src/Celero"]
+	path = src/Celero
+	url = https://github.com/DigitalInBlue/Celero.git
 [submodule "src/rabbitmq-server"]
 	path = src/rabbitmq-server
 	url = https://github.com/rabbitmq/rabbitmq-server.git
@@ -118,3 +121,21 @@
 [submodule "src/gperftools"]
 	path = src/gperftools
 	url = https://github.com/gperftools/gperftools.git
+[submodule "src/zstd"]
+	path = src/zstd
+	url = https://github.com/facebook/zstd.git
+[submodule "src/bistro"]
+	path = src/bistro
+	url = https://github.com/facebook/bistro.git
+[submodule "src/folly"]
+	path = src/folly
+	url = https://github.com/facebook/folly.git
+[submodule "src/wdt"]
+	path = src/wdt
+	url = https://github.com/facebook/wdt.git
+[submodule "src/fatal"]
+	path = src/fatal
+	url = https://github.com/facebook/fatal.git
+[submodule "src/proxygen"]
+	path = src/proxygen
+	url = https://github.com/facebook/proxygen.git
