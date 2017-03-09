@@ -83,7 +83,7 @@ printf "Build doxygen\n";
 sh build_using_cmake.sh doxygen "" > /dev/null
 
 printf "Build Poco\n"
-sh build_using_cmake.sh poco "-DPOCO_STATIC=TRUE -DENABLE_DATA_ODBC=FALSE -DENABLE_DATA_MYSQL=FALSE -DENABLE_MONGODB=FALSE" > /dev/null
+sh build_using_cmake.sh poco "-DPOCO_STATIC=TRUE -DENABLE_DATA_ODBC=FALSE -DENABLE_DATA_MYSQL=FALSE -DENABLE_MONGODB=FALSE -DENABLE-XML=FALSE -DENABLE_NET=FALSE -DENABLE_NETSSL=FALSE -DENABLE_DATA=FALSE -DENABLE_ZIP=FALSE ENABLE_REDIS=FALSE" > /dev/null
 
 printf "Build Celero\n"
 ./build_using_cmake.sh Celero > /dev/null

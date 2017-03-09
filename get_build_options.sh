@@ -14,12 +14,15 @@ case "$osType" in
             CXX=clang++
             BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O3" CXXFLAGS="-O3"
 			DYLIB_EXT=".dylib"
+			CMAKE_COMPILER_OPTIONS="-DCMAKE_CXX_COMPILER=g++-6 -DCMAKE_C_COMPILER=gcc-6"
+			MAKE_COMPILER_OPTIONS="CC=gcc-6 CPP=g++-6"
         } ;;
     "Linux")
         {
             NCPUS=$(grep -c ^processor /proc/cpuinfo)
             BUILD_OPTS=-j$((NCPUS+1)) CFLAGS="-O3" CXXFLAGS="-O3"
 			DYLIB_EXT=".so"
+			CMAKE_COMPILER_OPTIONS="-DCMAKE_CXX_COMPILER=g++-5 -DCMAKE_C_COMPILER=gcc-5"
         } ;;
     *)
         {
