@@ -115,7 +115,31 @@
 [submodule "src/turf"]
 	path = src/turf
 	url = https://github.com/preshing/turf.git
-
 [submodule "src/mc"]
 	path = src/mc
 	url = https://github.com/MidnightCommander/mc.git
+[submodule "src/coreutils"]
+	path = src/coreutils
+	url = https://github.com/coreutils/coreutils.git
+[submodule "src/gperftools"]
+	path = src/gperftools
+	url = https://github.com/gperftools/gperftools.git
+[submodule "src/zstd"]
+	path = src/zstd
+	url = https://github.com/facebook/zstd.git
+[submodule "src/bistro"]
+	path = src/bistro
+	url = https://github.com/facebook/bistro.git
+[submodule "src/folly"]
+	path = src/folly
+	url = https://github.com/facebook/folly.git
+[submodule "src/wdt"]
+	path = src/wdt
+	url = https://github.com/facebook/wdt.git
+[submodule "src/fatal"]
+	path = src/fatal
+	url = https://github.com/facebook/fatal.git
+[submodule "src/proxygen"]
+	path = src/proxygen
+	url = https://github.com/facebook/proxygen.git
+>>>>>>> 4a67c0a33559087d297f268096bb05eee5947d17

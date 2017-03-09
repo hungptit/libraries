@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./get_build_options.sh
+source ./get_build_options.sh;  # Initialize all required variables.
 
 build_git() {
     cd $SRC_DIR/git
@@ -24,35 +24,45 @@ sh download_source_code.sh http://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz
 sh download_source_code.sh http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.8.tar.xz gettext
 sh download_source_code.sh http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz bzip2
 sh download_source_code.sh http://alpha.gnu.org/gnu/make/make-4.1.90.tar.gz make
-
+sh download_source_code.sh http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz
 
 printf "Build all required packages\n";
+
 # We need to build git first
 printf "Build git\n"
 build_git > /dev/null;
 
 printf "Build help2man\n"
-sh build_using_configure.sh help2man > /dev/null 
+sh build_using_configure.sh help2man > /dev/null
 
 printf "Build gettext\n"
 sh build_using_autogen.sh gettext > /dev/null
 
 printf "Build make\n"
-sh build_using_configure.sh make > /dev/null 
+sh build_using_configure.sh make > /dev/null
 
 printf "Build xz\n"
 sh build_using_autogen.sh xz > /dev/null
 
-# printf "Build autoconf\n"
+printf "Build autoconf\n"
 sh build_using_autogen.sh autoconf > /dev/null
 
-# printf "Build automake\n"
+printf "Build automake\n"
 sh build_using_autogen.sh automake > /dev/null
+
+printf "Build htop\n"
+sh build_using_autogen.sh htop > /dev/null
+
+printf "Build gperf\n"
+sh build_using_configure.sh gperf > /dev/null 
 
 printf "Build libtool\n"
 sh build_using_configure.sh libtool > /dev/null
 
-# printf "Build textinfo\n"
+printf "Build coreutils\n"
+sh build_using_bootstrap.sh coreutils > /dev/null
+
+printf "Build textinfo\n"
 sh build_using_bootstrap.sh texinfo > /dev/null
 
 printf "Build cmake\n";
@@ -71,7 +81,7 @@ printf "Build lz4\n"
 sh build_using_make.sh lz4 "" "" > /dev/null
 
 printf "Build graphviz\n"
-sh build_using_configure.sh graphviz "" "" > /dev/null
+sh build_using_autogen.sh graphviz "" "" > /dev/null
 
 printf "Build jemalloc\n"
 sh build_using_autogen.sh jemalloc "" "" > /dev/null
@@ -97,10 +107,9 @@ printf "Build benchmark"
 printf "Install libsodium\n"
 sh build_using_autogen.sh libsodium  "" "" > /dev/null
 
-# TODO: Does not work on an old server. Need to fix this.
 printf "Install ZeroMQ\n"
-sh build_using_autogen.sh  libzmq "--with-libsodium=no " > /dev/null
+./build_using_cmake.sh  libzmq "-DWITH_LIBSODIUM=FALSE -DWITH_DOC=FALSE " > /dev/null
 
-# TODO: Fix rtags build issues
+# TODO: Fix rtags build issues because cmake could not find libclang.
 printf "Build rtags"
 ./build_using_cmake.sh rtags > /dev/null
