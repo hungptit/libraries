@@ -62,8 +62,7 @@ sh build_using_configure.sh libtool > /dev/null
 printf "Build coreutils\n"
 sh build_using_bootstrap.sh coreutils > /dev/null
 
-
-# printf "Build textinfo\n"
+printf "Build textinfo\n"
 sh build_using_bootstrap.sh texinfo > /dev/null
 
 printf "Build cmake\n";
