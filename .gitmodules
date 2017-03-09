@@ -112,3 +112,9 @@
 [submodule "src/turf"]
 	path = src/turf
 	url = https://github.com/preshing/turf.git
+[submodule "src/coreutils"]
+	path = src/coreutils
+	url = https://github.com/coreutils/coreutils.git
+[submodule "src/gperftools"]
+	path = src/gperftools
+	url = https://github.com/gperftools/gperftools.git
