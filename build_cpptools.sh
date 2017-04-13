@@ -3,30 +3,31 @@ source ./get_build_options.sh
 
 install_tbb() {
     TBB_RELEASE="tbb44_20160316oss_src"
-    TBB_FOLDER="tbb44_20160316oss"
-    TBB_LINK=https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/${TBB_RELEASE}.tgz
-    TBB_PREFIX=$EXTERNAL_FOLDER/tbb
-    TBB_FILE=${TBB_RELEASE}.tgz
+    TBB_FOLDER="tbb-2017_U5"
+    TBB_LINK=https://github.com/01org/tbb/archive/2017_U5.tar.gz
+    TBB_PREFIX=$ROOT_DIR/tbb
+    TBB_FILE="2017_U5.tar.gz"
 
-    cd $SRC_FOLDER
-    if [ ! -f $TBB_FILE ]; then
-        wget $TBB_LINK
-    fi
+    cd $SRC_DIR
 
     # Install TBB
     if [ ! -f $TBB_FILE ]; then
         wget --no-check-certificate $TBB_LINK
     fi
 
-    cd $EXTERNAL_FOLDER
-    tar xf $SRC_FOLDER/$TBB_FILE
+    tar xf $TBB_FILE
+	rm -rf $TBB_PREFIX
     mv $TBB_FOLDER $TBB_PREFIX
 
     cd $TBB_PREFIX
     make clean
-    make $BUILD_OPTS CXXFLAGS="-O3"
-    mkdir lib
-    cp build/linux_intel64_gcc_cc*_libc2.19_kernel4.4.0_release/*.so* lib/
+
+	# Customize some variables to make this build portable.
+	make $BUILD_OPTS CXXFLAGS="-O3 -march=native" LIBS="-static"
+	# make $BUILD_OPTS CXXFLAGS="-O3 -march=native" LIBS="/home/hdang/.linuxbrew/lib/libm.a"
+
+	mkdir -p lib
+    cp build/linux_intel64_gcc_cc*_release/*.so* lib/
     cd $EXTERNAL_FOLDER
 }
 
@@ -111,8 +112,8 @@ build_casablanca() {
 echo "Install TBB"
 install_tbb > /dev/null
 
-echo "Install eigen"
-install_eigen > /dev/null
+# echo "Install eigen"
+# install_eigen > /dev/null
 
 # if [ ! -d $HDF5_SRC  ]; then
 #     git clone $HDF5_GIT

@@ -3,7 +3,8 @@
 	url = https://github.com/facebook/rocksdb
 [submodule "src/cereal"]
 	path = src/cereal
-	url = https://github.com/USCiLab/cereal
+
+url = https://github.com/USCiLab/cereal
 [submodule "src/fmt"]
 	path = src/fmt
 	url = https://github.com/fmtlib/fmt
@@ -142,4 +143,14 @@
 [submodule "src/proxygen"]
 	path = src/proxygen
 	url = https://github.com/facebook/proxygen.git
->>>>>>> 4a67c0a33559087d297f268096bb05eee5947d17
+
+[submodule "src/gcc"]
+	path = src/gcc
+	url = https://github.com/gcc-mirror/gcc.git
+[submodule "src/libevent"]
+	path = src/libevent
+	url = https://github.com/libevent/libevent.git
+[submodule "src/fortune"]
+	path = src/fortune
+	url = git://github.com/bmc/fortune.git
+	branch = master
